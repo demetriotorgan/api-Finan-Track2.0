@@ -1,10 +1,10 @@
 const Objetivo = require('../model/Objetivo');
 
 module.exports.adicionarObjetivo = async(req,res)=>{
-    const {descricao, limite, categoria, gasto, periodo, data } = req.body;
+    const {descricao, limite, tipo, categoria, gasto, periodo, data } = req.body;
 
     try {
-        const novoObjetivo = new Objetivo({descricao, limite, categoria, gasto, periodo, data });
+        const novoObjetivo = new Objetivo({descricao, limite, tipo, categoria, gasto, periodo, data });
         await novoObjetivo.save();
         res.status(201).json({
             sucess:true,

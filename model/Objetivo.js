@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const ObjetivoSchema = new mongoose.Schema({
     descricao: {type:String, default:'Objetivo'},
     limite: {type:String, default:0},
+    tipo:{type:String, enum:['credito', 'debito', 'pix']},
     categoria: {type:String, enum:['supermercado', 'bebidas', 'lanche', 'abastecimento', 'agua', 'luz', 'internet', 'farmacia', 'outro']},
     gasto:{type:String, enum:['essencial', 'nao-essencial']},
     periodo: {type:Number},
