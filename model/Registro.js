@@ -5,7 +5,7 @@ const RegistroSchema = new mongoose.Schema({
     valor:{type:Number, default:0},
     tipo:{type:String, enum:['credito', 'debito', 'pix']},
     gasto:{type:String, enum:['essencial', 'nao-essencial']},
-    categoria:{type:String},
+    categoria:{type:String, enum:['supermercado', 'bebidas', 'lanche', 'abastecimento', 'agua', 'luz', 'internet', 'farmacia', 'outro']},
     data:{type:Date, default:Date.now()}
 });
 
