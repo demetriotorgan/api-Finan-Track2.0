@@ -6,6 +6,7 @@ const cors = require('cors');
 //Rotas
 const registroRoutes = require('./routes/registroRoutes');
 const objetivoRoutes = require('./routes/objetivoRoutes');
+const monitoramentoRoutes = require('./routes/monitoramentoRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -25,7 +26,7 @@ mongoose
     .then(()=>console.log('Conectado ao mongoDB'))
     .catch((err)=>console.log(err));
 
-app.use('/', registroRoutes,objetivoRoutes);
+app.use('/', registroRoutes,objetivoRoutes,monitoramentoRoutes);
 app.get('/', (req,res)=>{
      res.status(200).send("🚀 API de Finan-Track está online e funcional!");
 })
