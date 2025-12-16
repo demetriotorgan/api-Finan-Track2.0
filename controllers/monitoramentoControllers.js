@@ -1,10 +1,10 @@
 const Monitoramento = require('../model/Monitoramento');
 
 module.exports.adicionarMonitoramento = async(req,res)=>{
-    const {descricao, tipo, periodo, data} = req.body;
+    const {descricao, tipo,limite, periodo, data} = req.body;
 
     try {
-        const novoMonitoramento = new Monitoramento({descricao, tipo, periodo, data});
+        const novoMonitoramento = new Monitoramento({descricao, tipo, limite, periodo, data});
         await novoMonitoramento.save();
         res.status(201).json({
             sucess:true,
