@@ -3,7 +3,8 @@ const cors = require('cors');
 require('dotenv').config();
 
 // DB
-const { connectDB } = require('./config/database');
+const { connectDB, getMongoStatus } = require('./config/database');
+
 
 // Rotas
 const registroRoutes = require('./routes/registroRoutes');
