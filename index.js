@@ -37,5 +37,13 @@ app.get('/', (req, res) => {
   });
 });
 
-// 🚨 NÃO usar app.listen no Vercel
+// 🔎 Endpoint de status
+app.get('/status', (req, res) => {
+  res.json({
+    api: 'online',
+    mongo: getMongoStatus(),
+    timestamp: new Date().toISOString()
+  });
+});
+
 module.exports = app;

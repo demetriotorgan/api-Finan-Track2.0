@@ -24,4 +24,15 @@ async function connectDB() {
   return cached.conn;
 }
 
-module.exports = { connectDB };
+function getMongoStatus() {
+  const states = {
+    0: 'desconectado',
+    1: 'conectado',
+    2: 'conectando',
+    3: 'desconectando'
+  };
+
+  return states[mongoose.connection.readyState] || 'desconhecido';
+}
+
+module.exports = { connectDB, getMongoStatus };
