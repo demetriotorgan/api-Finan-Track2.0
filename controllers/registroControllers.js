@@ -1,4 +1,5 @@
 const Registro = require('../model/Registro');
+const { connectDB } = require('../config/database');
 
 module.exports.adicionarRegistro = async(req,res)=>{
     const {descricao, valor, tipo, gasto, categoria, data} = req.body;
@@ -17,7 +18,7 @@ module.exports.adicionarRegistro = async(req,res)=>{
     }
 };
 
-module.exports.listarRegsitros = async(req,res)=>{
+module.exports.listarRegistros = async(req,res)=>{
     try {
         const registros = await Registro.find()
         .sort({_id:-1})

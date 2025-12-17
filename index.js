@@ -1,9 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
+const withDB = require('./middlewares/withDB');
+
 
 // DB
-const { connectDB, getMongoStatus } = require('./config/database');
+const {getMongoStatus } = require('./config/database');
 
 
 // Rotas
@@ -22,11 +24,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// 🔌 Conecta ao banco SEM bloquear execução
-connectDB().catch((err) => {
-  console.error('❌ Erro ao conectar ao MongoDB:', err);
-});
-
 // Rotas
 app.use('/', registroRoutes, objetivoRoutes, monitoramentoRoutes);
 
@@ -39,7 +36,7 @@ app.get('/', (req, res) => {
 });
 
 // 🔎 Endpoint de status
-app.get('/status', (req, res) => {
+app.get('/status', withDB, (req, res) => {
   res.json({
     api: 'online',
     mongo: getMongoStatus(),

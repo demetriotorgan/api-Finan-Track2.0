@@ -1,9 +1,10 @@
 const express = require('express');
-const { adicionarRegistro, listarRegsitros, deletarRegistro } = require('../controllers/registroControllers');
+const { adicionarRegistro, deletarRegistro, listarRegistros } = require('../controllers/registroControllers');
 const router = express.Router();
+const withDB = require('../middlewares/withDB');
 
-router.post('/salvar-registro', adicionarRegistro);
-router.get('/listar-registros', listarRegsitros);
-router.delete('/deletar-registro/:id', deletarRegistro);
+router.post('/salvar-registro', withDB, adicionarRegistro);
+router.get('/listar-registros', withDB, listarRegistros);
+router.delete('/deletar-registro/:id', withDB, deletarRegistro);
 
 module.exports = router;
