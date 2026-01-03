@@ -1,10 +1,10 @@
 const Cartao = require('../model/Cartao');
 
 module.exports.adicionarCartao = async(req,res)=>{
-    const {descricao,limite, valorInicial, data } = req.body;
+    const {descricao,limite, valorInicial, data, dataLimite } = req.body;
 
     try {
-        const novoCartao = new Cartao({descricao,limite, valorInicial, data});
+        const novoCartao = new Cartao({descricao,limite, valorInicial, data, dataLimite});
         await novoCartao.save();
         res.status(201).json({
             sucess:true,
