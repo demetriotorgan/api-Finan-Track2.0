@@ -5,7 +5,8 @@ const MonitoramentoSchema = new mongoose.Schema({
     tipo: {type:String, enum:['credito', 'debito', 'pix']},
     limite:{type:Number, default:0},
     periodo: {type:Number},
-    data:{type:Date, default:Date.now()}
+    data:{type:Date, default:Date.now()},
+    dataLimite:{type:Date, default:Date.now()}
 });
 
 module.exports = mongoose.model('Monitoramento', MonitoramentoSchema);
